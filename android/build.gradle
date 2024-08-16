@@ -10,9 +10,23 @@ buildscript {
     }
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven { url = uri("https://jitpack.io") }
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/gocanvas/android_sdk")
+            credentials {
+                username = properties.getProperty("GOCANVAS_SDK_USERNAME")
+                password = properties.getProperty("GOCANVAS_SDK_ACCESS_TOKEN")
+            }
+        }
     }
 }
