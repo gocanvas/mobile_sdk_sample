@@ -11,7 +11,7 @@ repositories {
   //...
   maven {
      name = "GitHubPackages"
-     url = uri("https://maven.pkg.github.com/gocanvas/android_sdk")
+     url = uri("https://maven.pkg.github.com/gocanvas/mobile_sdk")
      credentials {
          username = "<github_username>"
          password = "<github_access_token>"
