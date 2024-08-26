@@ -1,0 +1,15 @@
+{
+  "originHash" : "25f326931576b76c0d3012138cb201c446c0b0531802796ce5fad69804868590",
+  "pins" : [
+    {
+      "identity" : "ios_sdk_package",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:gocanvas/ios_sdk_package.git",
+      "state" : {
+        "branch" : "feature/documentation",
+        "revision" : "005f7f7dc1be6d030ffc68c47a95ad702774aab9"
+      }
+    }
+  ],
+  "version" : 3
+}
