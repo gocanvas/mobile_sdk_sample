@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:gocanvas/ios_sdk_package.git",
       "state" : {
-        "branch" : "feature/documentation",
-        "revision" : "005f7f7dc1be6d030ffc68c47a95ad702774aab9"
+        "revision" : "ac6bd75a0633e34070c75b28cb8a37d37bfda5fe",
+        "version" : "0.0.1"
       }
     }
   ],

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		563C7C412C7E033F00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C402C7E033F00143DFD /* GCSdk */; };
-		563C7C482C7F088800143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C472C7F088800143DFD /* GCSdk */; };
+		563C7C502C7F222E00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C4F2C7F222E00143DFD /* GCSdk */; };
 		567353F92C777C7B00040B8A /* GCSdkSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */; };
 		567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567353FF2C777C7B00040B8A /* Preview Assets.xcassets */; };
 		56859D012C7CAD5300BF96B8 /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 56859D002C7CAD5300BF96B8 /* GCSdk */; };
@@ -41,7 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				563C7C412C7E033F00143DFD /* GCSdk in Frameworks */,
-				563C7C482C7F088800143DFD /* GCSdk in Frameworks */,
+				563C7C502C7F222E00143DFD /* GCSdk in Frameworks */,
 				56A74FFE2C777CC90086FFCA /* GCSdk in Frameworks */,
 				56859D012C7CAD5300BF96B8 /* GCSdk in Frameworks */,
 			);
@@ -134,7 +134,7 @@
 				56A74FFD2C777CC90086FFCA /* GCSdk */,
 				56859D002C7CAD5300BF96B8 /* GCSdk */,
 				563C7C402C7E033F00143DFD /* GCSdk */,
-				563C7C472C7F088800143DFD /* GCSdk */,
+				563C7C4F2C7F222E00143DFD /* GCSdk */,
 			);
 			productName = GCSdkSampleApp;
 			productReference = 567353F52C777C7B00040B8A /* GCSdkSampleApp.app */;
@@ -165,7 +165,7 @@
 			);
 			mainGroup = 567353EC2C777C7B00040B8A;
 			packageReferences = (
-				563C7C462C7F088800143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */,
+				563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */,
 			);
 			productRefGroup = 567353F62C777C7B00040B8A /* Products */;
 			projectDirPath = "";
@@ -405,12 +405,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		563C7C462C7F088800143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */ = {
+		563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:gocanvas/ios_sdk_package.git";
 			requirement = {
-				branch = feature/documentation;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -420,9 +420,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = GCSdk;
 		};
-		563C7C472C7F088800143DFD /* GCSdk */ = {
+		563C7C4F2C7F222E00143DFD /* GCSdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 563C7C462C7F088800143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */;
+			package = 563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */;
 			productName = GCSdk;
 		};
 		56859D002C7CAD5300BF96B8 /* GCSdk */ = {
