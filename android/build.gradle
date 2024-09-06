@@ -22,7 +22,7 @@ allprojects {
 
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/gocanvas/mobile_sdk")
+            url = uri("https://maven.pkg.github.com/gocanvas/android_sdk_package")
             credentials {
                 username = properties.getProperty("GOCANVAS_SDK_USERNAME")
                 password = properties.getProperty("GOCANVAS_SDK_ACCESS_TOKEN")
