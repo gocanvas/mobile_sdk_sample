@@ -8,17 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		563C7C412C7E033F00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C402C7E033F00143DFD /* GCSdk */; };
-		563C7C502C7F222E00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C4F2C7F222E00143DFD /* GCSdk */; };
 		567353F92C777C7B00040B8A /* GCSdkSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */; };
 		567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567353FF2C777C7B00040B8A /* Preview Assets.xcassets */; };
-		56859D012C7CAD5300BF96B8 /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 56859D002C7CAD5300BF96B8 /* GCSdk */; };
 		56A74FF52C777CAF0086FFCA /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FEA2C777CAF0086FFCA /* input.json */; };
 		56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FED2C777CAF0086FFCA /* Media.xcassets */; };
 		56A74FF82C777CAF0086FFCA /* GoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */; };
 		56A74FF92C777CAF0086FFCA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF02C777CAF0086FFCA /* RootViewController.swift */; };
 		56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FF12C777CAF0086FFCA /* RootViewController.xib */; };
 		56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF22C777CAF0086FFCA /* RootViewModel.swift */; };
-		56A74FFE2C777CC90086FFCA /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 56A74FFD2C777CC90086FFCA /* GCSdk */; };
 		56A750002C777DA20086FFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FFF2C777DA20086FFCA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -41,9 +38,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				563C7C412C7E033F00143DFD /* GCSdk in Frameworks */,
-				563C7C502C7F222E00143DFD /* GCSdk in Frameworks */,
-				56A74FFE2C777CC90086FFCA /* GCSdk in Frameworks */,
-				56859D012C7CAD5300BF96B8 /* GCSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,10 +125,7 @@
 			);
 			name = GCSdkSampleApp;
 			packageProductDependencies = (
-				56A74FFD2C777CC90086FFCA /* GCSdk */,
-				56859D002C7CAD5300BF96B8 /* GCSdk */,
 				563C7C402C7E033F00143DFD /* GCSdk */,
-				563C7C4F2C7F222E00143DFD /* GCSdk */,
 			);
 			productName = GCSdkSampleApp;
 			productReference = 567353F52C777C7B00040B8A /* GCSdkSampleApp.app */;
@@ -417,19 +408,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		563C7C402C7E033F00143DFD /* GCSdk */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GCSdk;
-		};
-		563C7C4F2C7F222E00143DFD /* GCSdk */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */;
-			productName = GCSdk;
-		};
-		56859D002C7CAD5300BF96B8 /* GCSdk */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GCSdk;
-		};
-		56A74FFD2C777CC90086FFCA /* GCSdk */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GCSdk;
 		};
