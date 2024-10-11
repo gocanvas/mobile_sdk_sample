@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56337A0F2CB9751500117815 /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 56337A0E2CB9751500117815 /* GCSdk */; };
 		563C7C412C7E033F00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C402C7E033F00143DFD /* GCSdk */; };
 		567353F92C777C7B00040B8A /* GCSdkSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */; };
 		567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567353FF2C777C7B00040B8A /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				563C7C412C7E033F00143DFD /* GCSdk in Frameworks */,
+				56337A0F2CB9751500117815 /* GCSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +128,7 @@
 			name = GCSdkSampleApp;
 			packageProductDependencies = (
 				563C7C402C7E033F00143DFD /* GCSdk */,
+				56337A0E2CB9751500117815 /* GCSdk */,
 			);
 			productName = GCSdkSampleApp;
 			productReference = 567353F52C777C7B00040B8A /* GCSdkSampleApp.app */;
@@ -156,7 +159,7 @@
 			);
 			mainGroup = 567353EC2C777C7B00040B8A;
 			packageReferences = (
-				563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */,
+				56337A0D2CB9751500117815 /* XCRemoteSwiftPackageReference "ios_sdk_package" */,
 			);
 			productRefGroup = 567353F62C777C7B00040B8A /* Products */;
 			projectDirPath = "";
@@ -326,11 +329,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location usage so when a GPS control is clicked the geolocation data can be saved and submitted.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location usage so when a GPS control is clicked the geolocation data can be saved and submitted.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,11 +361,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow location usage so when a GPS control is clicked the geolocation data can be saved and submitted.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location usage so when a GPS control is clicked the geolocation data can be saved and submitted.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,17 +407,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "ios_sdk_package" */ = {
+		56337A0D2CB9751500117815 /* XCRemoteSwiftPackageReference "ios_sdk_package" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:gocanvas/ios_sdk_package.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
+				branch = "github-release";
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		56337A0E2CB9751500117815 /* GCSdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56337A0D2CB9751500117815 /* XCRemoteSwiftPackageReference "ios_sdk_package" */;
+			productName = GCSdk;
+		};
 		563C7C402C7E033F00143DFD /* GCSdk */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GCSdk;

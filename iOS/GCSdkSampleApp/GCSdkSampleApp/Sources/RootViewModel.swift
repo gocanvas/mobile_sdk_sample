@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GCSdk
 
 protocol RootViewModelDelegate {
     func didReceiveResponse(jsonResponse: String)
@@ -14,6 +15,10 @@ protocol RootViewModelDelegate {
 class RootViewModel {
     var actionHandler: ((String) async -> Void)? = nil
     var delegate: RootViewModelDelegate? = nil
+    var formLauncher: GoCanvasFormLauncher? = nil
+    
+    let companyName = "companyId"
+    let trackingEndpoint = ""
     
     func didReceiveResponse(jsonResponse: String) {
         delegate?.didReceiveResponse(jsonResponse: jsonResponse)
