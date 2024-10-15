@@ -16,13 +16,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gocanvas.sdk.api.CanvasSdk;
+import com.gocanvas.sdk.api.CanvasSdkConfig;
+import com.gocanvas.sdk.api.CanvasSdkFormConfig;
 import com.gocanvas.sdk.api.CanvasSdkKey;
 import com.gocanvas.sdksample.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
 
+    String inputCompanyGuid = "";
     String inputJSON = "";
+    String inputReferenceDataJSON = "";
+    String inputPrefilledEntriesJSON = "";
     String submissionJson = "";
 
     ActivityResultLauncher<Intent> formLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -37,18 +42,29 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(this.getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.inputCompanyGuid.setText(inputCompanyGuid);
         binding.inputJson.setText(inputJSON);
+        binding.inputReferenceDataJson.setText(inputReferenceDataJSON);
+        binding.inputPrefilledEntriesJson.setText(inputPrefilledEntriesJSON);
         binding.submissionJson.setText(submissionJson);
 
         binding.showForm.setOnClickListener(view -> {
             inputJSON = binding.inputJson.getText().toString();
-            showForm(inputJSON);
+            inputCompanyGuid = binding.inputCompanyGuid.getText().toString();
+            inputReferenceDataJSON = binding.inputReferenceDataJson.getText().toString();
+            inputPrefilledEntriesJSON = binding.inputPrefilledEntriesJson.getText().toString();
+
+            initSdk(inputCompanyGuid);
+            showForm(inputJSON, inputReferenceDataJSON, inputPrefilledEntriesJSON);
         });
     }
 
     @Override
     protected void onPause() {
+        binding.inputCompanyGuid.setText("");
         binding.inputJson.setText("");
+        binding.inputReferenceDataJson.setText("");
+        binding.inputPrefilledEntriesJson.setText("");
         binding.submissionJson.setText("");
         super.onPause();
     }
@@ -56,12 +72,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        binding.inputCompanyGuid.setText(inputCompanyGuid);
         binding.inputJson.setText(inputJSON);
+        binding.inputReferenceDataJson.setText(inputReferenceDataJSON);
+        binding.inputPrefilledEntriesJson.setText(inputPrefilledEntriesJSON);
         binding.submissionJson.setText(submissionJson);
     }
 
-    private void showForm(String formJson) {
-        CanvasSdk.INSTANCE.showForm(formJson, this, formLauncher);
+    private void initSdk(String companyGuid) {
+        CanvasSdkConfig sdkConfig = new CanvasSdkConfig(companyGuid, null);
+        CanvasSdk.INSTANCE.init(sdkConfig);
+    }
+
+    private void showForm(String formJson, String referenceDataJSON, String prefilledEntriesJSON) {
+        CanvasSdkFormConfig formConfig = new CanvasSdkFormConfig(
+                formJson,
+                referenceDataJSON,
+                prefilledEntriesJSON
+        );
+
+        CanvasSdk.INSTANCE.showForm(formConfig, this, formLauncher);
     }
 
     private void handleResult(int resultCode, Intent data) {
