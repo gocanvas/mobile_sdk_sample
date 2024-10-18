@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSdk(String companyGuid) {
-        CanvasSdkConfig sdkConfig = new CanvasSdkConfig(companyGuid, null);
+        CanvasSdkConfig sdkConfig = new CanvasSdkConfig(companyGuid);
         CanvasSdk.INSTANCE.init(sdkConfig);
     }
 
