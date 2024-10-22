@@ -17,8 +17,8 @@ class RootViewModel {
     var delegate: RootViewModelDelegate? = nil
     var formLauncher: GoCanvasFormLauncher? = nil
     
-    let companyName = "companyId"
-    let trackingEndpoint = ""
+    //TODO: replace with your company GUID
+    let companyGuid = "DemoCompanyGUID"
     
     func didReceiveResponse(jsonResponse: String) {
         delegate?.didReceiveResponse(jsonResponse: jsonResponse)

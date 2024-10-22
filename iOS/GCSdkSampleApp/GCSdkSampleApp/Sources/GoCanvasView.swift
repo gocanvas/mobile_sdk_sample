@@ -21,8 +21,7 @@ public struct GoCanvasView : UIViewControllerRepresentable {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         rootViewController.viewModel.actionHandler = { json in
-            let config = GCSdkConfig(company: rootViewController.viewModel.companyName,
-                                trackingEndpoint: rootViewController.viewModel.trackingEndpoint)
+            let config = GCSdkConfig(companyGuid: rootViewController.viewModel.companyGuid)
             let formLauncher = GoCanvasFormLauncher(config: config)
         
             do {
