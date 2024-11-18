@@ -10,6 +10,8 @@ import UIKit
 class RootViewController: UIViewController {
     
     @IBOutlet weak var inputTextView: UITextView!
+    @IBOutlet weak var referenceDataTextView: UITextView!
+    @IBOutlet weak var prefilledDataTextView: UITextView!
     @IBOutlet weak var outputTextView: UITextView!
     
     public let viewModel = RootViewModel()
@@ -22,11 +24,10 @@ class RootViewController: UIViewController {
         
         viewModel.delegate = self
         
-        inputTextView.layer.borderWidth = textViewBorderWidth
-        inputTextView.layer.cornerRadius = textViewCornerRadius
-        
-        outputTextView.layer.borderWidth = textViewBorderWidth
-        outputTextView.layer.cornerRadius = textViewCornerRadius
+        [inputTextView, outputTextView, referenceDataTextView, prefilledDataTextView].forEach {
+            $0.layer.borderWidth = textViewBorderWidth
+            $0.layer.cornerRadius = textViewCornerRadius
+        }
         
         let path = Bundle.main.path(forResource: "input", ofType: "json")
         let fileUrl = URL(filePath: path ?? "")

@@ -14,6 +14,9 @@ protocol RootViewModelDelegate {
 class RootViewModel {
     var actionHandler: ((String) async -> Void)? = nil
     var delegate: RootViewModelDelegate? = nil
+    var companyGuid: String?
+    var referenceDataJson: String? = nil
+    var prefilledDataJson: String? = nil
     
     func didReceiveResponse(jsonResponse: String) {
         delegate?.didReceiveResponse(jsonResponse: jsonResponse)

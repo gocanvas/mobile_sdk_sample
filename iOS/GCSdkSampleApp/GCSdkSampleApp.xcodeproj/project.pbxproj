@@ -17,6 +17,7 @@
 		56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FF12C777CAF0086FFCA /* RootViewController.xib */; };
 		56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF22C777CAF0086FFCA /* RootViewModel.swift */; };
 		56A750002C777DA20086FFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FFF2C777DA20086FFCA /* Assets.xcassets */; };
+		C8D43E002CEB795E00D93F32 /* SDKFormLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		56A74FF12C777CAF0086FFCA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		56A74FF22C777CAF0086FFCA /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		56A74FFF2C777DA20086FFCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKFormLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		56A74FF32C777CAF0086FFCA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */,
 				56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */,
 				56A74FF02C777CAF0086FFCA /* RootViewController.swift */,
 				56A74FF12C777CAF0086FFCA /* RootViewController.xib */,
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D43E002CEB795E00D93F32 /* SDKFormLauncher.swift in Sources */,
 				56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */,
 				56A74FF82C777CAF0086FFCA /* GoCanvasView.swift in Sources */,
 				56A74FF92C777CAF0086FFCA /* RootViewController.swift in Sources */,
@@ -326,6 +330,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -354,6 +359,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
