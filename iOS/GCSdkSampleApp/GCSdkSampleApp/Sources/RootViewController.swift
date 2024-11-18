@@ -9,6 +9,7 @@ import UIKit
 
 class RootViewController: UIViewController {
     
+    @IBOutlet weak var companyGuidTextField: UITextField!
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var referenceDataTextView: UITextView!
     @IBOutlet weak var prefilledDataTextView: UITextView!
@@ -28,12 +29,6 @@ class RootViewController: UIViewController {
             $0.layer.borderWidth = textViewBorderWidth
             $0.layer.cornerRadius = textViewCornerRadius
         }
-        
-        let path = Bundle.main.path(forResource: "input", ofType: "json")
-        let fileUrl = URL(filePath: path ?? "")
-        let input = try? String(contentsOf: fileUrl, encoding: .utf8)
-        
-        inputTextView.text = input
     }
     
     @IBAction func clearTextTapped(_ sender: Any) {
@@ -41,6 +36,19 @@ class RootViewController: UIViewController {
     }
     
     @IBAction func launchFormTapped(_ sender: Any) {
+        viewModel.companyGuid = companyGuidTextField.text ?? ""
+        
+        let referenceDataJson = referenceDataTextView.text ?? ""
+        let prefilledDataJson = prefilledDataTextView.text ?? ""
+        
+        if !referenceDataJson.isEmpty {
+            viewModel.referenceDataJson = referenceDataJson
+        }
+        
+        if !prefilledDataJson.isEmpty {
+            viewModel.prefilledDataJson = prefilledDataJson
+        }
+        
         if let text = inputTextView.text {
             Task { @MainActor in
                 await viewModel.actionHandler?(text)

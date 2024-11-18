@@ -10,7 +10,6 @@
 		563C7C412C7E033F00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C402C7E033F00143DFD /* GCSdk */; };
 		567353F92C777C7B00040B8A /* GCSdkSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */; };
 		567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567353FF2C777C7B00040B8A /* Preview Assets.xcassets */; };
-		56A74FF52C777CAF0086FFCA /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FEA2C777CAF0086FFCA /* input.json */; };
 		56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FED2C777CAF0086FFCA /* Media.xcassets */; };
 		56A74FF82C777CAF0086FFCA /* GoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */; };
 		56A74FF92C777CAF0086FFCA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF02C777CAF0086FFCA /* RootViewController.swift */; };
