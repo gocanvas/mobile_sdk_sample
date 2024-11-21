@@ -10,10 +10,6 @@ import SwiftUI
 import GCSdk
 
 public struct GoCanvasView : UIViewControllerRepresentable {
-    enum SDKConfigKeys: String {
-        case CompanyGUID = "MOBILE_COMPANY_GUID"
-    }
-    
     private var rootViewController = RootViewController()
     
     public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

@@ -43,10 +43,14 @@ class RootViewController: UIViewController {
         
         if !referenceDataJson.isEmpty {
             viewModel.referenceDataJson = referenceDataJson
+        } else {
+            viewModel.referenceDataJson = nil
         }
         
         if !prefilledDataJson.isEmpty {
             viewModel.prefilledDataJson = prefilledDataJson
+        } else {
+            viewModel.prefilledDataJson = nil
         }
         
         if let text = inputTextView.text {
