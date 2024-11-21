@@ -176,7 +176,6 @@
 			files = (
 				56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */,
 				56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */,
-				56A74FF52C777CAF0086FFCA /* input.json in Resources */,
 				56A750002C777DA20086FFCA /* Assets.xcassets in Resources */,
 				567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */,
 			);
@@ -406,7 +405,7 @@
 			repositoryURL = "git@github.com:gocanvas/ios_sdk_package.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
