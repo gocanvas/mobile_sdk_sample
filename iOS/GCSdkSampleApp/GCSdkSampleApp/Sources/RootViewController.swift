@@ -36,22 +36,10 @@ class RootViewController: UIViewController {
     }
     
     @IBAction func launchFormTapped(_ sender: Any) {
-        viewModel.companyGuid = companyGuidTextField.text ?? ""
+        viewModel.companyGuid = companyGuidTextField.text
         
-        let referenceDataJson = referenceDataTextView.text ?? ""
-        let prefilledDataJson = prefilledDataTextView.text ?? ""
-        
-        if !referenceDataJson.isEmpty {
-            viewModel.referenceDataJson = referenceDataJson
-        } else {
-            viewModel.referenceDataJson = nil
-        }
-        
-        if !prefilledDataJson.isEmpty {
-            viewModel.prefilledDataJson = prefilledDataJson
-        } else {
-            viewModel.prefilledDataJson = nil
-        }
+        viewModel.referenceDataJson = referenceDataTextView.text
+        viewModel.prefilledDataJson = prefilledDataTextView.text
         
         if let text = inputTextView.text {
             Task { @MainActor in
