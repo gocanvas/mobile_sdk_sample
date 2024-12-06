@@ -1,0 +1,15 @@
+{
+  "originHash" : "1d1e042cdb9280e2be2ac6fd600cc97d0460a342843397b36b4d27b60bb07715",
+  "pins" : [
+    {
+      "identity" : "mobile_sdk_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:gocanvas/mobile_sdk_ios.git",
+      "state" : {
+        "revision" : "f911818b6f330c87ca60e4dd53a817f08d71c131",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

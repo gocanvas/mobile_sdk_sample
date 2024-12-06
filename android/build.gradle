@@ -1,0 +1,31 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/gocanvas/mobile_sdk_android")
+            credentials {
+                username = properties.getProperty("GOCANVAS_SDK_USERNAME")
+                password = properties.getProperty("GOCANVAS_SDK_ACCESS_TOKEN")
+            }
+        }
+    }
+}
