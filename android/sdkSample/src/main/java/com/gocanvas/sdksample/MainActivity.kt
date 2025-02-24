@@ -1,123 +1,185 @@
-package com.gocanvas.sdksample;
+package com.gocanvas.sdksample
 
-import static com.gocanvas.sdk.api.CanvasSdkKey.ERROR_MESSAGE_KEY;
-import static com.gocanvas.sdk.api.CanvasSdkKey.ERROR_NUMBER_KEY;
-import static com.gocanvas.sdk.api.CanvasSdkKey.RESPONSE_KEY;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.gocanvas.sdk.api.CanvasSdk
+import com.gocanvas.sdk.api.CanvasSdkFormConfig
+import com.gocanvas.sdk.api.CanvasSdkKey
+import com.gocanvas.sdksample.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.gocanvas.sdk.api.CanvasSdk;
-import com.gocanvas.sdk.api.CanvasSdkKey;
-import com.gocanvas.sdksample.databinding.ActivityMainBinding;
-
-public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
-
-    String inputJSON = "";
-    String submissionJson = "";
-
-    ActivityResultLauncher<Intent> formLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                handleResult(result.getResultCode(), result.getData());
-                showResult(result.getResultCode(), result.getData());
-            });
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(this.getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        binding.inputJson.setText(inputJSON);
-        binding.submissionJson.setText(submissionJson);
-
-        binding.showForm.setOnClickListener(view -> {
-            inputJSON = binding.inputJson.getText().toString();
-            showForm(inputJSON);
-        });
+    private val formLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        result.data?.let { data ->
+            handleResult(result.resultCode, data)
+            showResult(result.resultCode, data)
+        }
     }
 
-    @Override
-    protected void onPause() {
-        binding.inputJson.setText("");
-        binding.submissionJson.setText("");
-        super.onPause();
+    public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.uiState.collect { setupUiState(it) }
+            }
+        }
+
+        binding.showForm.setOnClickListener {
+            saveViewModelState()
+            initSdk()
+            showForm()
+        }
+
+        initFromAssets()
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        binding.inputJson.setText(inputJSON);
-        binding.submissionJson.setText(submissionJson);
+    private fun initSdk() {
+        CanvasSdk.init(viewModel.uiState.value.licenseKey ?: "")
     }
 
-    private void showForm(String formJson) {
-        CanvasSdk.INSTANCE.showForm(formJson, this, formLauncher);
+    private fun showForm() {
+        val state = viewModel.uiState.value
+
+        val formConfig = CanvasSdkFormConfig(
+            state.formJson ?: "",
+            state.referenceDataJson,
+            state.prefilledEntriesJson
+        )
+
+        CanvasSdk.showForm(formConfig, this, formLauncher)
     }
 
-    private void handleResult(int resultCode, Intent data) {
-        switch (resultCode) {
-            case Activity.RESULT_OK:
+    private fun handleResult(resultCode: Int, data: Intent) {
+        val tag = "CanvasSdkResult"
+
+        when (resultCode) {
+            RESULT_OK ->
                 // form completed successfully
-                if (data != null && data.hasExtra(CanvasSdkKey.RESPONSE_KEY)) {
-                    Log.i("ActivityResult", "form has response: " + data.getExtras().get(CanvasSdkKey.RESPONSE_KEY));
-                    Log.i("ActivityResult", "form response: " + CanvasSdk.INSTANCE.getResponse());
+                if (data.hasExtra(CanvasSdkKey.RESPONSE_KEY)) {
+                    Log.i(tag, "form response: " + CanvasSdk.getResponse())
                 }
-                break;
-            case Activity.RESULT_CANCELED:
+
+            RESULT_CANCELED ->
                 // user canceled or an error occurred
-                if (data != null && data.hasExtra(CanvasSdkKey.ERROR_NUMBER_KEY) && data.hasExtra(CanvasSdkKey.ERROR_MESSAGE_KEY)) {
-                    Log.i("ActivityResult", "error code: " + data.getExtras().get(CanvasSdkKey.ERROR_NUMBER_KEY));
-                    Log.i("ActivityResult", "error message: " + data.getExtras().get(CanvasSdkKey.ERROR_MESSAGE_KEY));
+                if (data.hasExtra(CanvasSdkKey.ERROR_NUMBER_KEY) && data.hasExtra(CanvasSdkKey.ERROR_MESSAGE_KEY)) {
+                    Log.i(tag, "error code: " + data.extras?.getString(CanvasSdkKey.ERROR_NUMBER_KEY))
+                    Log.i(tag, "error message: " + data.extras?.getString(CanvasSdkKey.ERROR_MESSAGE_KEY))
                 }
-                break;
         }
     }
 
-    private void showResult(int resultCode, Intent intent) {
-        String errorCode = "None";
-        String errorMessage = "None";
-        String responseText = "";
+    @SuppressLint("DefaultLocale")
+    private fun showResult(resultCode: Int, intent: Intent) {
+        var errorCode: String? = "None"
+        var errorMessage: String? = "None"
 
-        if ((intent != null) && (intent.getExtras() != null)) {
-            if (intent.getExtras().containsKey(ERROR_NUMBER_KEY) && intent.getExtras().getString(ERROR_NUMBER_KEY).length() > 0) {
-                errorCode = intent.getExtras().getString(ERROR_NUMBER_KEY);
+        intent.extras?.let { extras ->
+            if (extras.containsKey(CanvasSdkKey.ERROR_NUMBER_KEY)) {
+                errorCode = extras.getString(CanvasSdkKey.ERROR_NUMBER_KEY)
             }
-            if (intent.getExtras().containsKey(ERROR_MESSAGE_KEY) && intent.getExtras().getString(ERROR_MESSAGE_KEY).length() > 0) {
-                errorMessage = intent.getExtras().getString(ERROR_MESSAGE_KEY);
+
+            if (extras.containsKey(CanvasSdkKey.ERROR_MESSAGE_KEY)) {
+                errorMessage = extras.getString(CanvasSdkKey.ERROR_MESSAGE_KEY)
             }
-            if (intent.getExtras().containsKey(RESPONSE_KEY)) {
-                responseText = CanvasSdk.INSTANCE.getResponse();
+
+            if (extras.containsKey(CanvasSdkKey.RESPONSE_KEY)) {
+                viewModel.setResponseUiState(CanvasSdk.getResponse())
             }
         }
 
-        submissionJson = responseText;
-        binding.submissionJson.setText(submissionJson);
-
-        String messageTitle = "Result";
-        String resultCodeString = String.format("Result Code: \n%d\n", resultCode);
-        String errorCodeString = String.format("Error Number: \n%s\n", errorCode);
-        String errorMessageString = String.format("Error Message: \n%s\n", errorMessage);
-        String messageText = String.format("%s\n%s\n%s", resultCodeString, errorCodeString, errorMessageString);
-        showMessage(this, messageTitle, messageText, "OK");
+        val resultCodeString = String.format("Result Code: \n%d\n", resultCode)
+        val errorCodeString = String.format("Error Number: \n%s\n", errorCode)
+        val errorMessageString = String.format("Error Message: \n%s\n", errorMessage)
+        val messageText =
+            String.format("%s\n%s\n%s", resultCodeString, errorCodeString, errorMessageString)
+        showMessage(this, messageText)
     }
 
-    private void showMessage(Context context, String title, String message, String buttonText) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    private fun showMessage(context: Context, message: String) {
+        val builder = AlertDialog.Builder(context)
         builder.setMessage(message)
-                .setTitle(title)
-                .setCancelable(false)
-                .setNeutralButton(buttonText, null);
-        AlertDialog alert = builder.create();
-        alert.show();
+            .setTitle("Result")
+            .setCancelable(false)
+            .setNeutralButton("OK", null)
+        val alert = builder.create()
+        alert.show()
+    }
+
+    override fun onPause() {
+        saveViewModelState()
+        binding.run {
+            inputLicenseKey.setText("")
+            inputJson.setText("")
+            inputReferenceDataJson.setText("")
+            inputPrefilledEntriesJson.setText("")
+            submissionJson.setText("")
+        }
+        super.onPause()
+    }
+
+    private fun setupUiState(state: SdkApiUiState) {
+        binding.run {
+            inputLicenseKey.setText(state.licenseKey)
+            inputJson.setText(state.formJson)
+            inputReferenceDataJson.setText(state.referenceDataJson)
+            inputPrefilledEntriesJson.setText(state.prefilledEntriesJson)
+            submissionJson.setText(state.responseJson)
+        }
+    }
+
+    private fun saveViewModelState() {
+        binding.run {
+            viewModel.setSdkApiUiState(
+                SdkApiUiState(
+                    licenseKey = inputLicenseKey.text?.toString(),
+                    formJson = inputJson.text?.toString(),
+                    referenceDataJson = inputReferenceDataJson.text?.toString(),
+                    prefilledEntriesJson = inputPrefilledEntriesJson.text?.toString(),
+                    responseJson = submissionJson.text?.toString()
+                )
+            )
+        }
+    }
+
+    private fun initFromAssets() {
+        val licenseKey = getStringFromAssets("license_key.txt")
+        val formInput = getStringFromAssets("form_input.json")
+        val referenceDataInput = getStringFromAssets("reference_data_input.json")
+        val prefilledEntriesInput = getStringFromAssets("prefilled_entries_input.json")
+
+        binding.run {
+            inputLicenseKey.setText(licenseKey)
+            inputJson.setText(formInput)
+            inputReferenceDataJson.setText(referenceDataInput)
+            inputPrefilledEntriesJson.setText(prefilledEntriesInput)
+        }
+
+        saveViewModelState()
+    }
+
+    private fun getStringFromAssets(fileName: String): String {
+        return application.assets.open(fileName)
+            .bufferedReader()
+            .use { it.readText() }
     }
 }

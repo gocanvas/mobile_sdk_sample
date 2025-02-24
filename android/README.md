@@ -15,3 +15,11 @@ The sample app contains the following UI components:
 - `Show Form Button` - attempts to launch the form using the inputted JSON
 - `Form JSON Input EditText` - used as a JSON source for launching the forms
 - `Submission JSON Output EditText` - populated with the submission returned after the form flow is finished
+
+## Helper Assets
+
+You can prefill the sample app's inputs by adding your data into the following files (path `../src/main/assets`):
+- license_key.txt
+- form_input.json
+- prefilled_entries_input.json
+- reference_data_input.json
