@@ -9,7 +9,10 @@ import UIKit
 
 class RootViewController: UIViewController {
     
+    @IBOutlet weak var licenseKeyTextView: UITextView!
     @IBOutlet weak var inputTextView: UITextView!
+    @IBOutlet weak var referenceDataTextView: UITextView!
+    @IBOutlet weak var prefilledDataTextView: UITextView!
     @IBOutlet weak var outputTextView: UITextView!
     
     public let viewModel = RootViewModel()
@@ -22,17 +25,15 @@ class RootViewController: UIViewController {
         
         viewModel.delegate = self
         
-        inputTextView.layer.borderWidth = textViewBorderWidth
-        inputTextView.layer.cornerRadius = textViewCornerRadius
-        
-        outputTextView.layer.borderWidth = textViewBorderWidth
-        outputTextView.layer.cornerRadius = textViewCornerRadius
-        
-        let path = Bundle.main.path(forResource: "input", ofType: "json")
-        let fileUrl = URL(filePath: path ?? "")
-        let input = try? String(contentsOf: fileUrl, encoding: .utf8)
-        
-        inputTextView.text = input
+        [licenseKeyTextView,
+         inputTextView,
+         outputTextView,
+         referenceDataTextView,
+         prefilledDataTextView
+        ].forEach {
+            $0.layer.borderWidth = textViewBorderWidth
+            $0.layer.cornerRadius = textViewCornerRadius
+        }
     }
     
     @IBAction func clearTextTapped(_ sender: Any) {
@@ -40,6 +41,11 @@ class RootViewController: UIViewController {
     }
     
     @IBAction func launchFormTapped(_ sender: Any) {
+        viewModel.licenseKey = licenseKeyTextView.text ?? ""
+
+        viewModel.referenceDataJson = referenceDataTextView.text
+        viewModel.prefilledDataJson = prefilledDataTextView.text
+        
         if let text = inputTextView.text {
             Task { @MainActor in
                 await viewModel.actionHandler?(text)
