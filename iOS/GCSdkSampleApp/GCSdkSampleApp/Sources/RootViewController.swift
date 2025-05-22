@@ -14,7 +14,8 @@ class RootViewController: UIViewController {
     @IBOutlet weak var referenceDataTextView: UITextView!
     @IBOutlet weak var prefilledDataTextView: UITextView!
     @IBOutlet weak var outputTextView: UITextView!
-    
+    @IBOutlet weak var userInterfaceStyleSegment: UISegmentedControl!
+
     public let viewModel = RootViewModel()
 
     private let textViewCornerRadius = 8.0
@@ -23,6 +24,9 @@ class RootViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        // force light mode for the app main view controller
+        overrideUserInterfaceStyle = .light
+
         viewModel.delegate = self
         
         [licenseKeyTextView,
@@ -50,6 +54,23 @@ class RootViewController: UIViewController {
             Task { @MainActor in
                 await viewModel.actionHandler?(text)
             }
+        }
+    }
+    
+    @IBAction func userInterfaceStyleChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            overrideUserInterfaceStyle = .light
+            viewModel.userInterfaceStyle = .light
+            
+        case 1:
+            overrideUserInterfaceStyle = .dark
+            viewModel.userInterfaceStyle = .dark
+            
+        default:
+            overrideUserInterfaceStyle = .unspecified
+            viewModel.userInterfaceStyle = .unspecified
         }
     }
 }

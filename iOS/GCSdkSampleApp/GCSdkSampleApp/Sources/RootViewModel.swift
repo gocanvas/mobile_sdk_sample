@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit.UIInterface
 
 protocol RootViewModelDelegate {
     func didReceiveResponse(jsonResponse: String)
@@ -17,7 +18,8 @@ class RootViewModel {
     var licenseKey: String?
     var referenceDataJson: String? = nil
     var prefilledDataJson: String? = nil
-    
+    var userInterfaceStyle: UIUserInterfaceStyle = .light
+
     func didReceiveResponse(jsonResponse: String) {
         delegate?.didReceiveResponse(jsonResponse: jsonResponse)
     }
