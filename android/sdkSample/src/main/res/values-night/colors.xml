@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gc_sdk_color_primary">#9076DC</color>
+    <color name="gc_sdk_color_primary_dark">#9076DC</color>
+    <color name="gc_sdk_color_accent">#47dfa7</color>
+    <color name="gc_sdk_color_secondary">#47dfa7</color>
+
+    <color name="gc_sdk_color_secondary_container">#201f23</color>
+    <color name="gc_sdk_color_background_progress">#948f9a</color>
+    <color name="gc_sdk_color_error">#ffb4ab</color>
+
+    <color name="gc_sdk_color_background_dark">#141317</color>
+
+    <color name="gc_sdk_color_light">#000000</color>
+    <color name="gc_sdk_color_dark">#ffffff</color>
+</resources>

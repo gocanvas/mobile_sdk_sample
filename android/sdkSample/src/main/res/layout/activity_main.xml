@@ -21,6 +21,7 @@
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiLicenseKey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="License Key"
@@ -33,6 +34,48 @@
                 android:minLines="1"
                 android:maxLines="3" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvThemeSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Interface Theme"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiLicenseKey" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/themeSelectionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvThemeSelection"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/interfaceThemeLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="Light" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/interfaceThemeDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="Dark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/interfaceThemeSystem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="System" />
+        </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"

@@ -2,7 +2,17 @@
 <resources>
 
     <color name="gc_sdk_color_primary">#64558F</color>
-    <color name="gc_sdk_color_accent">#615B71</color>
     <color name="gc_sdk_color_primary_dark">#64558F</color>
-    <color name="gc_sdk_color_secondary">#615B71</color>
+    <color name="gc_sdk_color_accent">#00bd88</color>
+    <color name="gc_sdk_color_secondary">#00bd88</color>
+
+    <color name="gc_sdk_color_secondary_container">#ffffff</color>
+    <color name="gc_sdk_color_background_progress">#eeefe3</color>
+    <color name="gc_sdk_color_error">#ba1a1a</color>
+
+    <color name="gc_sdk_color_background_light">#fdf8fd</color>
+    <color name="gc_sdk_color_background_dark">#141317</color>
+
+    <color name="gc_sdk_color_light">#ffffff</color>
+    <color name="gc_sdk_color_dark">#1d2117</color>
 </resources>

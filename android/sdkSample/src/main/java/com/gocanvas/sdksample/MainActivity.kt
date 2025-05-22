@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.gocanvas.sdk.api.CanvasSdk
 import com.gocanvas.sdk.api.CanvasSdkFormConfig
+import com.gocanvas.sdk.api.CanvasSdkInterfaceTheme
 import com.gocanvas.sdk.api.CanvasSdkKey
 import com.gocanvas.sdksample.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
@@ -54,7 +55,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSdk() {
-        CanvasSdk.init(viewModel.uiState.value.licenseKey ?: "")
+        val uiState = viewModel.uiState.value
+        CanvasSdk.init(uiState.licenseKey ?: "")
+        uiState.interfaceTheme?.let { CanvasSdk.addConfigValue("MOBILE_INTERFACE_THEME", it) }
     }
 
     private fun showForm() {
@@ -144,6 +147,7 @@ class MainActivity : AppCompatActivity() {
             inputReferenceDataJson.setText(state.referenceDataJson)
             inputPrefilledEntriesJson.setText(state.prefilledEntriesJson)
             submissionJson.setText(state.responseJson)
+            state.interfaceTheme?.let { setSdkThemeUiState(it) }
         }
     }
 
@@ -155,7 +159,8 @@ class MainActivity : AppCompatActivity() {
                     formJson = inputJson.text?.toString(),
                     referenceDataJson = inputReferenceDataJson.text?.toString(),
                     prefilledEntriesJson = inputPrefilledEntriesJson.text?.toString(),
-                    responseJson = submissionJson.text?.toString()
+                    responseJson = submissionJson.text?.toString(),
+                    interfaceTheme = getSdkTheme()
                 )
             )
         }
@@ -181,5 +186,24 @@ class MainActivity : AppCompatActivity() {
         return application.assets.open(fileName)
             .bufferedReader()
             .use { it.readText() }
+    }
+
+    private fun getSdkTheme(): CanvasSdkInterfaceTheme? {
+        val checkedChipId = binding.themeSelectionGroup.checkedChipId
+
+        return when (checkedChipId) {
+            R.id.interfaceThemeLight -> CanvasSdkInterfaceTheme.LIGHT
+            R.id.interfaceThemeDark -> CanvasSdkInterfaceTheme.DARK
+            R.id.interfaceThemeSystem -> CanvasSdkInterfaceTheme.SYSTEM
+            else -> null
+        }
+    }
+
+    private fun setSdkThemeUiState(theme: CanvasSdkInterfaceTheme) {
+        return when (theme) {
+            CanvasSdkInterfaceTheme.LIGHT -> binding.interfaceThemeLight.isChecked = true
+            CanvasSdkInterfaceTheme.DARK -> binding.interfaceThemeDark.isChecked = true
+            CanvasSdkInterfaceTheme.SYSTEM -> binding.interfaceThemeSystem.isChecked = true
+        }
     }
 }

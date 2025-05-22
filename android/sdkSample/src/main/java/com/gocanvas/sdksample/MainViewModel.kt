@@ -1,6 +1,7 @@
 package com.gocanvas.sdksample
 
 import androidx.lifecycle.ViewModel
+import com.gocanvas.sdk.api.CanvasSdkInterfaceTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,7 +12,8 @@ data class SdkApiUiState(
     val formJson: String? = null,
     val referenceDataJson: String? = null,
     val prefilledEntriesJson: String? = null,
-    val responseJson: String? = null
+    val responseJson: String? = null,
+    val interfaceTheme: CanvasSdkInterfaceTheme? = null
 )
 
 class MainViewModel: ViewModel() {
