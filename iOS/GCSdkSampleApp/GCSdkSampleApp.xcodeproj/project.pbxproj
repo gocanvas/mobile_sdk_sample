@@ -10,26 +10,26 @@
 		563C7C412C7E033F00143DFD /* GCSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 563C7C402C7E033F00143DFD /* GCSdk */; };
 		567353F92C777C7B00040B8A /* GCSdkSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */; };
 		567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567353FF2C777C7B00040B8A /* Preview Assets.xcassets */; };
-		56A74FF52C777CAF0086FFCA /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FEA2C777CAF0086FFCA /* input.json */; };
 		56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FED2C777CAF0086FFCA /* Media.xcassets */; };
 		56A74FF82C777CAF0086FFCA /* GoCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */; };
 		56A74FF92C777CAF0086FFCA /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF02C777CAF0086FFCA /* RootViewController.swift */; };
 		56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FF12C777CAF0086FFCA /* RootViewController.xib */; };
 		56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF22C777CAF0086FFCA /* RootViewModel.swift */; };
 		56A750002C777DA20086FFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FFF2C777DA20086FFCA /* Assets.xcassets */; };
+		C8D43E002CEB795E00D93F32 /* SDKFormLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		567353F52C777C7B00040B8A /* GCSdkSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCSdkSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCSdkSampleAppApp.swift; sourceTree = "<group>"; };
 		567353FF2C777C7B00040B8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		56A74FEA2C777CAF0086FFCA /* input.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = input.json; sourceTree = "<group>"; };
 		56A74FED2C777CAF0086FFCA /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoCanvasView.swift; sourceTree = "<group>"; };
 		56A74FF02C777CAF0086FFCA /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		56A74FF12C777CAF0086FFCA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		56A74FF22C777CAF0086FFCA /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		56A74FFF2C777DA20086FFCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKFormLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,18 +80,9 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		56A74FEB2C777CAF0086FFCA /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				56A74FEA2C777CAF0086FFCA /* input.json */,
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
 		56A74FEE2C777CAF0086FFCA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				56A74FEB2C777CAF0086FFCA /* Input */,
 				56A74FED2C777CAF0086FFCA /* Media.xcassets */,
 			);
 			path = Resources;
@@ -100,6 +91,7 @@
 		56A74FF32C777CAF0086FFCA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */,
 				56A74FEF2C777CAF0086FFCA /* GoCanvasView.swift */,
 				56A74FF02C777CAF0086FFCA /* RootViewController.swift */,
 				56A74FF12C777CAF0086FFCA /* RootViewController.xib */,
@@ -156,7 +148,7 @@
 			);
 			mainGroup = 567353EC2C777C7B00040B8A;
 			packageReferences = (
-				C8C2968F2D02F27F000DF58D /* XCRemoteSwiftPackageReference "mobile_sdk_ios" */,
+				563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "mobile_sdk_ios" */,
 			);
 			productRefGroup = 567353F62C777C7B00040B8A /* Products */;
 			projectDirPath = "";
@@ -174,7 +166,6 @@
 			files = (
 				56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */,
 				56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */,
-				56A74FF52C777CAF0086FFCA /* input.json in Resources */,
 				56A750002C777DA20086FFCA /* Assets.xcassets in Resources */,
 				567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */,
 			);
@@ -187,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D43E002CEB795E00D93F32 /* SDKFormLauncher.swift in Sources */,
 				56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */,
 				56A74FF82C777CAF0086FFCA /* GoCanvasView.swift in Sources */,
 				56A74FF92C777CAF0086FFCA /* RootViewController.swift in Sources */,
@@ -326,6 +318,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -354,6 +347,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GCSdkSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Our app uses the camera to capture photos that are uploaded as part of your submission.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -396,12 +390,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C8C2968F2D02F27F000DF58D /* XCRemoteSwiftPackageReference "mobile_sdk_ios" */ = {
+		563C7C4E2C7F222E00143DFD /* XCRemoteSwiftPackageReference "mobile_sdk_ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:gocanvas/mobile_sdk_ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
