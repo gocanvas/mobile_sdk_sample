@@ -16,6 +16,7 @@
 		56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FF12C777CAF0086FFCA /* RootViewController.xib */; };
 		56A74FFB2C777CAF0086FFCA /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A74FF22C777CAF0086FFCA /* RootViewModel.swift */; };
 		56A750002C777DA20086FFCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A74FFF2C777DA20086FFCA /* Assets.xcassets */; };
+		C859F1012E253A7000EED537 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C859F1002E253A7000EED537 /* Localizable.xcstrings */; };
 		C8D43E002CEB795E00D93F32 /* SDKFormLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		56A74FF12C777CAF0086FFCA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		56A74FF22C777CAF0086FFCA /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		56A74FFF2C777DA20086FFCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C859F1002E253A7000EED537 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C8D43DFF2CEB795100D93F32 /* SDKFormLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKFormLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				567353F82C777C7B00040B8A /* GCSdkSampleAppApp.swift */,
 				56A74FFF2C777DA20086FFCA /* Assets.xcassets */,
 				567353FE2C777C7B00040B8A /* Preview Content */,
+				C859F1002E253A7000EED537 /* Localizable.xcstrings */,
 			);
 			path = GCSdkSampleApp;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A74FF72C777CAF0086FFCA /* Media.xcassets in Resources */,
+				C859F1012E253A7000EED537 /* Localizable.xcstrings in Resources */,
 				56A74FFA2C777CAF0086FFCA /* RootViewController.xib in Resources */,
 				56A750002C777DA20086FFCA /* Assets.xcassets in Resources */,
 				567354002C777C7B00040B8A /* Preview Assets.xcassets in Resources */,
@@ -397,7 +401,7 @@
 			repositoryURL = "git@github.com:gocanvas/mobile_sdk_ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.2;
+				minimumVersion = 3.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
