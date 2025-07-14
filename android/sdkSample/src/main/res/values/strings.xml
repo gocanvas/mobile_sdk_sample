@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GoCanvas SDK Sample</string>
+    <string name="submit_button_title">Submit</string>
 </resources>
