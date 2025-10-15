@@ -1,16 +1,22 @@
 package com.gocanvas.sdksample
 
 import android.annotation.SuppressLint
+import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,12 +38,20 @@ class MainActivity : AppCompatActivity() {
             handleResult(result.resultCode, data)
             showResult(result.resultCode, data)
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            /* Make sure your ui mode is set back to what you had in the app
+             otherwise it will be influenced by the SDK */
+            val uiManager = this@MainActivity.getSystemService(UI_MODE_SERVICE) as UiModeManager
+            uiManager.setApplicationNightMode(UiModeManager.MODE_NIGHT_AUTO)
+        }
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setEdgeToEdgeSystemBarPadding(binding.root)
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
@@ -204,6 +218,21 @@ class MainActivity : AppCompatActivity() {
             CanvasSdkInterfaceTheme.LIGHT -> binding.interfaceThemeLight.isChecked = true
             CanvasSdkInterfaceTheme.DARK -> binding.interfaceThemeDark.isChecked = true
             CanvasSdkInterfaceTheme.SYSTEM -> binding.interfaceThemeSystem.isChecked = true
+        }
+    }
+
+    private fun setEdgeToEdgeSystemBarPadding(view: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+                        or WindowInsetsCompat.Type.displayCutout()
+            )
+            v.updatePadding(
+                left = bars.left,
+                top = bars.top,
+                right = bars.right,
+            )
+            WindowInsetsCompat.CONSUMED
         }
     }
 }
